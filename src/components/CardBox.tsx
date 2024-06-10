@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
    cardWrapper: {
       ...style.box,
       backgroundColor: Colors.secondary,
-      borderRadius: 20,
-      borderWidth: 0.4,
+      borderRadius: 7,
+      borderWidth: 0.7,
       marginBottom: 10,
       borderColor: Colors.primaryLight
    },

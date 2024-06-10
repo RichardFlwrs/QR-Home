@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import {
-   Image, Text, View, ImageBackground, Dimensions, ScrollView,
-   TouchableOpacity,
-   Platform,
-   Button
+   Text, View, ImageBackground, Dimensions, ScrollView,
+   TouchableOpacity
 } from 'react-native'
 import { Colors } from 'theme/colors'
 import style from 'theme/style'
@@ -11,8 +9,6 @@ import TemplateView, { TopWrapperView } from '../../components/grid/TemplateView
 import { useNavigation } from '@react-navigation/native';
 import MyIcon from 'components/utils/MyIcon';
 import { Center, TopNav } from 'components/grid/Flex';
-import { CardBox } from 'components/CardBox';
-import LineSeparator from 'components/utils/LineSeparator';
 import Spacer from 'components/utils/Spacer';
 import { Formik } from 'formik';
 import MyInput from 'components/form/MyInput';
@@ -21,8 +17,13 @@ import { IFamily } from 'Interfaces/IFamily';
 const width = Dimensions.get('screen').width
 const height = Dimensions.get('screen').height
 
-export default function AddFamily() {
+export default function AddFamily({ route }: any) {
    const navigation = useNavigation();
+   if (route.params) {
+      const { id } = route.params
+      console.log(id);
+   }
+
 
    return (
       <TemplateView barColor={Colors.primary}>

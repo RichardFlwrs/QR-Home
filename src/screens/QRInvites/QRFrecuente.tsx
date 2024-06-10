@@ -50,7 +50,7 @@ export default function QRFrecuente() {
                   title='Eladio Salazar C'
                   leading={<View style={{ width: 50 }}>
                      <MyCheckbox
-                        scale={0.7}
+                        scale={0.9}
                         onPress={() => null}
                      />
                   </View>}
@@ -62,7 +62,7 @@ export default function QRFrecuente() {
                   title='Alberto Torres'
                   leading={<View style={{ width: 50 }}>
                      <MyCheckbox
-                        scale={0.7}
+                        scale={0.9}
                         onPress={() => null}
                      />
                   </View>}

@@ -13,6 +13,7 @@ import { Center, Row, TopNav } from 'components/grid/Flex';
 import { CardBox } from 'components/CardBox';
 import LineSeparator from 'components/utils/LineSeparator';
 import Spacer from 'components/utils/Spacer';
+import { MyCheckbox } from 'components/form/MyCheckbox';
 
 const width = Dimensions.get('screen').width
 const height = Dimensions.get('screen').height
@@ -20,8 +21,8 @@ const height = Dimensions.get('screen').height
 export default function Home() {
     const navigation = useNavigation();
 
-    const gotoAddFam = () => { navigation.navigate('AddFamily') }
-    const gotoAddVehicle = () => { navigation.navigate('AddVehicle') }
+    const gotoAddFam = (id = 0) => { navigation.navigate('AddFamily', { id }) }
+    const gotoAddVehicle = (id = 0) => { navigation.navigate('AddVehicle', { id }) }
 
     return (
         <TemplateView barColor={Colors.primary} >
@@ -64,25 +65,31 @@ export default function Home() {
                             </View>
 
                             <View style={{ position: 'relative' }}>
-                                <TouchableOpacity onPress={gotoAddFam} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
+                                <TouchableOpacity onPress={() => gotoAddFam()} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
                                     <MyIcon isMaterial name='plus' size={24} color={Colors.bg} />
                                 </TouchableOpacity>
                             </View>
                         </Row>
 
-                        <CardBox
-                            border={'none'}
-                            icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
-                            title='Eladio Salazar C'
-                            subtitle='eslazar@colmena29.mx'
-                        />
+                        <TouchableOpacity onPress={() => gotoAddFam(1)}>
+                            <CardBox
+                                border={'none'}
+                                icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
+                                title='Eladio Salazar C'
+                                subtitle='eslazar@colmena29.mx'
+                                leading={<MyIcon name='chevron-forward' size={18} color={Colors.grayLight} />}
+                            />
+                        </TouchableOpacity>
                         <LineSeparator flat />
-                        <CardBox
-                            border={'none'}
-                            icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
-                            title='Alberto Torres'
-                            subtitle='altor@mail.com'
-                        />
+                        <TouchableOpacity onPress={() => gotoAddFam(2)}>
+                            <CardBox
+                                border={'none'}
+                                icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
+                                title='Alberto Torres'
+                                subtitle='altor@mail.com'
+                                leading={<MyIcon name='chevron-forward' size={18} color={Colors.grayLight} />}
+                            />
+                        </TouchableOpacity>
                     </View>
 
                     {/* Vehiculos */}
@@ -100,7 +107,7 @@ export default function Home() {
                             </View>
 
                             <View style={{ position: 'relative' }}>
-                                <TouchableOpacity onPress={gotoAddVehicle} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
+                                <TouchableOpacity onPress={() => gotoAddVehicle()} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
                                     <MyIcon isMaterial name='plus' size={24} color={Colors.bg} />
                                 </TouchableOpacity>
                             </View>
@@ -112,6 +119,9 @@ export default function Home() {
                             title='Chrysler Pro Master'
                             subtitle='Placa: PP2232A'
                             style={{ borderBottomColor: Colors.bg, borderWidth: 2 }}
+                            leading={<View style={{ width: 50 }}>
+                                <MyCheckbox scale={0.9} onPress={() => null} />
+                            </View>}
                         />
                         <LineSeparator flat />
                         <CardBox
@@ -119,6 +129,9 @@ export default function Home() {
                             icon={{ name: 'car-sport', size: 24, style: { marginRight: 10 } }}
                             title='MG Mg'
                             subtitle='Placa: SRJ187B'
+                            leading={<View style={{ width: 50 }}>
+                                <MyCheckbox scale={0.9} onPress={() => null} />
+                            </View>}
                         />
                     </View>
 
