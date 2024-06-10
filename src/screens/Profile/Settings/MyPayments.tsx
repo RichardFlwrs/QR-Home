@@ -35,9 +35,8 @@ export default function MyPayments() {
                   { t1: '$10.00', t2: 'Pago', t3: '13/feb/2024', s: 'Pendiente', sColor: Colors.primaryLight },
                   { t1: '$500.00', t2: '200', t3: '07/nov/2023', s: 'Pendiente', sColor: Colors.primaryLight },
                   { t1: '$2000.00', t2: 'Octubre', t3: '04/oct/2023', s: 'Rechazado', sColor: Colors.errorDarkText },
-               ].map((data, index) => <>
+               ].map((data, index) => <View key={index}>
                   <CardBox
-                     key={index}
                      border={'none'}
                      icon={{
                         name: 'currency-usd',
@@ -53,7 +52,7 @@ export default function MyPayments() {
                      </View>}
                   />
                   <LineSeparator flat />
-               </>)}
+               </View>)}
             </View>
 
          </ScrollView>

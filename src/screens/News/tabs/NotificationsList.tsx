@@ -31,7 +31,7 @@ export default function NotificationsList() {
         </View>
 
         <View style={{ position: 'relative' }}>
-          <TouchableOpacity onPress={gotoSurveyHistory} style={[style.iconBtn, { padding: 3 }]}>
+          <TouchableOpacity onPress={gotoSurveyHistory} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
             <MyIcon name='timer-outline' size={24} color={Colors.bg} />
           </TouchableOpacity>
         </View>

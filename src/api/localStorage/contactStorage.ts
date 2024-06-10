@@ -14,7 +14,6 @@ interface Contact {
 
 export const saveToken = (token: string) => {
    // if (getToken() === '') return
-
    storage.save({
       key: TOKEN_BD_KEY,
       data: { token }

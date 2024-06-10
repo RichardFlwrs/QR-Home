@@ -44,7 +44,7 @@ export const CardBox = forwardRef<View, CardProps>((P, ref) => {
 
 
    /** Elements */
-   const IMG = <View style={styles.imgWrapper}>
+   let IMG = <View style={styles.imgWrapper}>
       {P.icon != undefined
          ? <MyIcon
             isMaterial={P.icon.isMaterial}
@@ -56,6 +56,7 @@ export const CardBox = forwardRef<View, CardProps>((P, ref) => {
          : <MyIcon name={P.iconName || ''} size={70} color='black' />
       }
    </View>
+   if (!P.iconName && !P.icon) IMG = <View></View>
 
    const TEXT = <View style={styles.txtWrapper}>
       {P.title ? <Text style={styles.headerTitle}>{P.title}</Text> : null}

@@ -30,7 +30,7 @@ export default function MyIcon(P: IconProps) {
 
    const nIcon = <Icon
       style={P.style}
-      name={P.name}
+      name={P.name || "alert-circle-outline"}
       color={P.color}
       size={P.size}
    />

@@ -64,7 +64,7 @@ export default function Home() {
                             </View>
 
                             <View style={{ position: 'relative' }}>
-                                <TouchableOpacity onPress={gotoAddFam} style={[style.iconBtn, { padding: 3 }]}>
+                                <TouchableOpacity onPress={gotoAddFam} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
                                     <MyIcon isMaterial name='plus' size={24} color={Colors.bg} />
                                 </TouchableOpacity>
                             </View>
@@ -100,7 +100,7 @@ export default function Home() {
                             </View>
 
                             <View style={{ position: 'relative' }}>
-                                <TouchableOpacity onPress={gotoAddVehicle} style={[style.iconBtn, { padding: 3 }]}>
+                                <TouchableOpacity onPress={gotoAddVehicle} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
                                     <MyIcon isMaterial name='plus' size={24} color={Colors.bg} />
                                 </TouchableOpacity>
                             </View>

@@ -1,10 +1,12 @@
 import React from 'react'
 import StackNavigator from "navigator/StackNavigator";
+import { AppProvider } from 'context/createDataContext';
 
 export default function App() {
-  // <AppProvider>
   return (
-    <StackNavigator />
+    <AppProvider>
+      <StackNavigator />
+    </AppProvider>
   )
 
 
