@@ -45,25 +45,19 @@ export default function NotificationsList() {
       {/* Notificaciones */}
       <LineSeparator text='Notificaciones' top={4} bottom={10} justifyStart />
 
-      <CardBox
-        border={'none'}
-        icon={{ name: 'notifications', size: 20, style: { marginRight: 10 } }}
-        title='Basura'
-        subtitle='Camion recolector de basura ingresa'
-        leading={<TouchableOpacity style={style.iconSelectable} onPress={gotoNotif}>
-          <MyIcon name='chevron-forward' size={20} color='black' />
-        </TouchableOpacity>}
-      />
-      <LineSeparator flat />
-      <CardBox
-        border={'none'}
-        icon={{ name: 'notifications', size: 20, style: { marginRight: 10 } }}
-        title='Su pago #9 (La Alhambra)'
-        subtitle='No pudo ser validado ❌'
-        leading={<TouchableOpacity style={style.iconSelectable} onPress={gotoNotif}>
-          <MyIcon name='chevron-forward' size={20} color='black' />
-        </TouchableOpacity>}
-      />
+      {[
+        { id: 1, t1: 'Basura', t2: 'Camion recolector de basura ingresa' },
+        { id: 2, t1: 'Su pago #9 (La Alhambra)', t2: 'No pudo ser validado ❌' },
+      ].map((data, index) => <TouchableOpacity onPress={() => gotoNotif()} key={index}>
+        <CardBox
+          border={'none'}
+          icon={{ name: 'notifications', size: 20, style: { marginRight: 10 } }}
+          title={data.t1}
+          subtitle={data.t2}
+          leading={<MyIcon name='chevron-forward' size={20} color='black' />}
+        />
+        {index < 1 ? <LineSeparator flat /> : null}
+      </TouchableOpacity>)}
     </View>
   )
 }

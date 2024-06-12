@@ -46,12 +46,19 @@ export default function MyTabs() {
                             colors={['#ee8b8f', Colors.primary, '#710005']}
                             style={[styles.iconFloat, { backgroundColor: Colors.primary }]}
                         >
-                            <MyIcon
+                            {/* <MyIcon
                                 // { marginTop: -60 }
                                 name={focused ? 'qr-code' : 'qr-code-outline'}
                                 color={Colors.bg}
                                 size={26}
+                            /> */}
+
+                            <Image
+                                source={require('../../assets/image/icons1/QR-ICON.png')}
+                                resizeMode='stretch'
+                                style={{ height: 35, width: 35 }}
                             />
+
                         </LinearGradient>
                     },
                     headerShown: false,
@@ -65,7 +72,7 @@ export default function MyTabs() {
                         return <View style={{}}>
                             <MyIcon
                                 // { marginTop: -60 }
-                                name={focused ? 'newspaper' : 'newspaper-outline'}
+                                name={focused ? 'notifications' : 'notifications-outline'}
                                 color={focused ? Colors.black : Colors.grayLight}
                                 size={26}
                             />
@@ -83,9 +90,9 @@ export default function MyTabs() {
 const styles = StyleSheet.create({
     iconFloat: {
         backgroundColor: Colors.primary,
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        borderRadius: 25,
+        paddingHorizontal: 15,
+        paddingVertical: 15,
+        borderRadius: 50,
         marginTop: -60
     }
 })

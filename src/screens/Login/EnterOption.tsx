@@ -27,10 +27,10 @@ export default function EnterOption() {
          navigation.dispatch(
             CommonActions.reset({
                index: 0,
-               routes: [{ name: 'MyTabs' }],
+               routes: [{ name: 'ChooseHouse' }],
             })
          );
-         navigation.navigate('MyTabs')
+         navigation.navigate('ChooseHouse')
 
       } catch (error) {
          console.warn(error);

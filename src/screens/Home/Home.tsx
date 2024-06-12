@@ -29,67 +29,54 @@ export default function Home() {
             <ImageBackground source={require('../../../assets/image/fondo.png')} resizeMode='stretch' style={{ flex: 1 }}>
                 <TopNav
                     title='Mi casa'
-                    titleStyle={[style.apptitle, { color: Colors.white }]}
+                    titleStyle={[style.subtitle, { color: Colors.white, marginTop: -10 }]}
                     withLogo='white'
                 />
 
+                {/* Address */}
+                <Center style={{ position: 'relative' }}>
+                    <Text style={[{ position: 'absolute', color: Colors.white, top: -20 }]}>
+                        Alhambra #999 La Alhambra
+                    </Text>
+                </Center>
+
                 <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 10, paddingHorizontal: 10 }}>
+                    {/* Welcome */}
+                    <View>
+                        <Text style={[style.apptitle, { color: Colors.white, marginVertical: 15 }]}>
+                            Bienvenido Ricardo
+                        </Text>
+                    </View>
 
-                    {/* Welcome Card */}
-                    <View style={[style.card, { padding: 0, borderWidth: 0, borderTopRightRadius: 25, borderTopLeftRadius: 25 }]}>
-
-                        {/* <Text style={{ fontSize: 27, textAlign: 'center' }}>Bienvenido Ricardo </Text> */}
-                        {/* <Spacer y={5} / */}
-
-                        <ImageBackground
-                            source={require('../../../assets/image/house-bg.jpg')}
+                    {/* Tarjetas de Acceso */}
+                    <View style={[style.card, { padding: 0, borderWidth: 0 }]}>
+                        {/* <ImageBackground
+                            source={require('../../../assets/image/QR-bg.jpeg')}
+                            borderTopLeftRadius={7}
+                            borderTopRightRadius={7}
                             resizeMode='cover'
-                            borderTopLeftRadius={25}
-                            borderTopRightRadius={25}
                             style={{ height: 140 }}>
-                        </ImageBackground>
+                        </ImageBackground> */}
 
-                        {/* Direccion */}
-                        <LineSeparator text='Dirección' top={4} bottom={10} justifyStart />
-
-                        <CardBox
-                            border={'none'}
-                            icon={{ name: 'home', size: 20, style: { marginRight: 10 } }}
-                            subtitle='Alhambra #999 La Alhambra'
-                        />
-
-                        {/* Familia */}
-                        <Row center>
-                            <View style={{ flex: 1 }}>
-                                <LineSeparator text='Familia' top={20} bottom={20} justifyStart />
-                            </View>
-
-                            <View style={{ position: 'relative' }}>
-                                <TouchableOpacity onPress={() => gotoAddFam()} style={[style.iconBtn, { padding: 3, marginRight: 10 }]}>
-                                    <MyIcon isMaterial name='plus' size={24} color={Colors.bg} />
-                                </TouchableOpacity>
-                            </View>
-                        </Row>
-
-                        <TouchableOpacity onPress={() => gotoAddFam(1)}>
+                        <View>
                             <CardBox
                                 border={'none'}
-                                icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
-                                title='Eladio Salazar C'
-                                subtitle='eslazar@colmena29.mx'
-                                leading={<MyIcon name='chevron-forward' size={18} color={Colors.grayLight} />}
+                                title='No permito el acceso'
+                                subtitle='Acceso a visitas no autorizadas'
+                                style={{ borderBottomColor: Colors.bg, borderWidth: 2 }}
+                                leading={<View style={{ width: 50 }}>
+                                    <MyCheckbox scale={1.2} onPress={() => null} />
+                                </View>}
                             />
-                        </TouchableOpacity>
-                        <LineSeparator flat />
-                        <TouchableOpacity onPress={() => gotoAddFam(2)}>
-                            <CardBox
-                                border={'none'}
-                                icon={{ name: 'person', size: 20, style: { marginRight: 10 } }}
-                                title='Alberto Torres'
-                                subtitle='altor@mail.com'
-                                leading={<MyIcon name='chevron-forward' size={18} color={Colors.grayLight} />}
-                            />
-                        </TouchableOpacity>
+                        </View>
+
+                        <View style={style.relative}>
+                            <LineSeparator text='Tarjetas de Acceso' top={4} justifyStart />
+                        </View>
+
+                        <Center h={70}>
+                            <Text style={[style.faintText]}>No tienes tarjetas registradas</Text>
+                        </Center>
                     </View>
 
                     {/* Vehiculos */}
@@ -97,6 +84,8 @@ export default function Home() {
                         <ImageBackground
                             source={require('../../../assets/image/car.jpeg')}
                             resizeMode='cover'
+                            borderTopLeftRadius={7}
+                            borderTopRightRadius={7}
                             style={{ height: 140 }}>
 
                         </ImageBackground>
@@ -135,22 +124,7 @@ export default function Home() {
                         />
                     </View>
 
-                    {/* Tarjetas de Acceso */}
-                    <View style={[style.card, { padding: 0, borderWidth: 0 }]}>
-                        <ImageBackground
-                            source={require('../../../assets/image/QR-bg.jpeg')}
-                            resizeMode='cover'
-                            style={{ height: 140 }}>
-                        </ImageBackground>
 
-                        <View style={style.relative}>
-                            <LineSeparator text='Tarjetas de Acceso' top={4} justifyStart />
-                        </View>
-
-                        <Center h={70}>
-                            <Text style={[style.faintText]}>No tienes tarjetas registradas</Text>
-                        </Center>
-                    </View>
 
                 </ScrollView>
 

@@ -44,6 +44,7 @@ export default function Setting() {
    ]
 
    const CUENTAS: any[] = [
+      { text: 'Familia', link: 'FamilyList' },
       { text: 'Editar mi perfil', link: 'EditProfile' },
       { text: 'Cambiar contraseña', link: 'ChangePassword' },
       { text: 'Mis pagos', link: 'MyPayments' },

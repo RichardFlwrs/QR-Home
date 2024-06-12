@@ -19,6 +19,7 @@ import EditProfile from 'screens/Profile/Settings/EditProfile';
 import MyPayments from 'screens/Profile/Settings/MyPayments';
 import Tarifas from 'screens/Profile/Settings/Tarifas';
 import ReportError from 'screens/Profile/Settings/ReportError';
+import FamilyList from 'screens/Profile/Settings/FamilyList';
 
 
 const Stack = createNativeStackNavigator();
@@ -74,5 +75,6 @@ const SCREENS_LIST = [
    { name: 'MyPayments', component: MyPayments },
    { name: 'Tarifas', component: Tarifas },
    { name: 'ReportError', component: ReportError },
+   { name: 'FamilyList', component: FamilyList },
    { name: 'Setting', component: Setting }
 ]
