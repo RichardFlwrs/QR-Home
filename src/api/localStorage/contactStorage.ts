@@ -1,101 +1,73 @@
 import storage from "./localStorage";
 
-const CONTACTS_BD_KEY = 'contactsData';
 const TOKEN_BD_KEY = 'loginState';
+const USER_IMG_KEY = 'userImage';
 
-interface Contact {
-   firstName: string,
-   lastName: string,
-   email: string,
-   createdAt?: number,
-   image?: File,
+
+/**
+ * TOKEN
+ */
+export const saveToken = (token: string) => {
+   // if (getToken() === '') return
+   __set(TOKEN_BD_KEY, token)
+}
+
+export const getToken = async () => {
+   return await __get(TOKEN_BD_KEY)
+}
+
+export const removeToken = async () => {
+   __remove(TOKEN_BD_KEY)
+}
+
+/**
+ * IMAGE
+ */
+export const saveUserImage = (data: string) => {
+   __set(USER_IMG_KEY, data)
+}
+
+export const getUserImage = async () => {
+   return await __get(USER_IMG_KEY)
+}
+
+export const removeUserImage = async () => {
+   __remove(USER_IMG_KEY)
 }
 
 
-export const saveToken = (token: string) => {
-   // if (getToken() === '') return
+/**   *  *  *  *  *
+ *
+ *    Private Methods
+ * 
+ */
+
+
+const __set = (KEY: string, DATA: any) => {
    storage.save({
-      key: TOKEN_BD_KEY,
-      data: { token }
+      key: KEY,
+      data: DATA
    });
 }
 
 
-export const getToken = async () => {
+const __get = async (KEY: string) => {
    let res = ''
-
-
    try {
-      res = await storage.load({ key: TOKEN_BD_KEY }).then((p) => p.token)
+      res = await storage.load({ key: KEY }).then((data) => data)
    } catch (err: any) {
-      switch (err.name) {
-         case 'NotFoundError':
-            // DO NOTHING;
-            break;
-         default:
-            console.warn(err.message);
-            break;
-
-      }
+      console.info(`| Storage __get | '${KEY}' not found `);
+      console.info(err.message);
    }
-
    return res
 }
 
-export const removeToken = async () => {
+
+const __remove = async (KEY: string) => {
    try {
-      await storage.remove({ key: TOKEN_BD_KEY })
+      await storage.remove({ key: KEY })
    } catch (error) {
       throw Error(error as string)
    }
-}
-
-
-export const apiSaveContact = async (data: Contact) => {
-   data.createdAt = Date.now()
-   let contacts = await apiLoadContacts();
-   contacts.push(data)
-
-   let response = null;
-
-   try {
-      await storage.save({
-         key: CONTACTS_BD_KEY,
-         data: contacts,
-         expires: null
-      });
-      response = "Saved succesfully"
-   } catch (_err) {
-      console.warn(_err);
-      response = "Something went wrong"
-   }
-
-   return response
-}
-
-export const apiLoadContacts = async () => {
-   let response: Contact[] = []
-
-   response = await storage
-      .load({ key: CONTACTS_BD_KEY, })
-      .then((ret: Contact[]) => {
-         return ret
-      })
-      .catch(err => {
-         // any exception including data not found
-         // goes to catch()
-         console.warn(err.message);
-         switch (err.name) {
-            case 'NotFoundError':
-               // TODO;
-               break;
-            case 'ExpiredError':
-               // TODO
-               break;
-         }
-         return []
-      });
-
-   return response
 }
 

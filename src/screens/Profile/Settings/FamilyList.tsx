@@ -21,7 +21,7 @@ export default function FamilyList() {
    return (
       <Wrapper barTrasnparent={true}>
 
-         <TopNav trailing={<View><Logo w={90} h={50} resizeMode='contain'></Logo></View>} title='Pagos' />
+         <TopNav trailing={<View><Logo w={90} h={50} resizeMode='contain'></Logo></View>} title='Familia' />
 
          {/* <ImageBackground
             source={require('../../../../assets/image/survey-bg.jpeg')}
@@ -31,11 +31,9 @@ export default function FamilyList() {
 
          <ScrollView showsVerticalScrollIndicator={false} style={[style.main, { marginTop: 10 }]}>
 
-            <CardBox
-               border={{ padding: 0, marginBottom: 25 }}
-               title='Pagos'
-               subtitle='Lista de pagos'
-            />
+            <TouchableOpacity style={style.btn} onPress={() => gotoAddFam()}>
+               <Text style={style.btntxt}>Agregar Familiar</Text>
+            </TouchableOpacity>
 
             <View>
                {[

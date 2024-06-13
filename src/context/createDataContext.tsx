@@ -32,7 +32,8 @@ const initialState: InitialStateType = {
    auth: {
       id: 0,
       token: '',
-      errorMessage: ''
+      errorMessage: '',
+      image: ''
    }
 };
 

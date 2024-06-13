@@ -16,7 +16,9 @@ export enum Types {
    ERROR = "ADD_ERROR",
    SIGNIN = "SIGNIN",
    SIGNOUT = "SIGNOUT",
-   CLEAR_ERROR = "CLEAR_ERROR"
+   CLEAR_ERROR = "CLEAR_ERROR",
+   SET_IMAGE = "SET_IMAGE",
+   CLEAR_IMAGE = "CLEAR_IMAGE",
 }
 
 type AuthPayload = {
@@ -24,6 +26,8 @@ type AuthPayload = {
    [Types.CLEAR_ERROR]: undefined;
    [Types.SIGNIN]: string;
    [Types.SIGNOUT]: undefined;
+   [Types.SET_IMAGE]: string;
+   [Types.CLEAR_IMAGE]: undefined;
 };
 
 export type AuthActions = ActionMap<AuthPayload>[keyof ActionMap<
@@ -43,6 +47,10 @@ export const authReducer = (
          return { ...state, token: action.payload };
       case Types.SIGNOUT:
          return { token: '', id: 0, errorMessage: '' } as IAuthUser;
+      case Types.SET_IMAGE:
+         return { ...state, image: action.payload } as IAuthUser;
+      case Types.CLEAR_IMAGE:
+         return { ...state, image: '' } as IAuthUser;
       default:
          return state;
    }

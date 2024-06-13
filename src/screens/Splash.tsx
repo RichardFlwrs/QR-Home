@@ -1,7 +1,7 @@
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react'
 import { SafeAreaView, StatusBar, ImageBackground, Image } from 'react-native';
-import { getToken } from 'api/localStorage/contactStorage';
+import { getToken, getUserImage } from 'api/localStorage/contactStorage';
 import { Types } from 'context/AuthReducers';
 import { AppContext } from 'context/createDataContext';
 import { Colors } from 'theme/colors';
@@ -16,6 +16,8 @@ export default function Splash() {
             const token = await getToken()
             if (token) {
                 dispatch({ type: Types.SIGNIN, payload: token })
+                const base64 = await getUserImage()
+                if (base64) dispatch({ type: Types.SET_IMAGE, payload: base64 })
                 navigation.navigate('MyTabs')
             }
             else {
