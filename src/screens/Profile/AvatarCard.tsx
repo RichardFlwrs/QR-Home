@@ -8,6 +8,8 @@ import { getUserImage, removeUserImage, saveUserImage } from 'api/localStorage/c
 import MyIcon from 'components/utils/MyIcon'
 import { AppContext } from 'context/createDataContext'
 import { Types } from 'context/AuthReducers'
+import UserImageSelected from 'components/utils/UserImageSelected'
+import UserNameIcon from 'components/utils/UserNameIcon'
 
 export default function AvatarCard() {
    const { state, dispatch } = React.useContext(AppContext);
@@ -45,8 +47,8 @@ export default function AvatarCard() {
          <Center>
             <TouchableOpacity onPressOut={() => selectImage()} style={{ width: 100 }}>
                {base64Icon
-                  ? <ImageSelected path64={base64Icon} />
-                  : <NameIcon />
+                  ? <UserImageSelected width={100} height={100} path64={base64Icon} />
+                  : <UserNameIcon size={100} display='RF' />
                }
             </TouchableOpacity>
          </Center>
@@ -73,45 +75,6 @@ export default function AvatarCard() {
             <Text style={{ fontSize: 14, color: Colors.txt2 }}>ricardo.alberto096@gmail.com</Text>
          </Center>
       </View>
-   )
-}
-
-const ImageSelected = ({ path64 }: any) => {
-   return (
-      <View style={[style.centerAll]}>
-         <Image
-            borderRadius={50}
-            style={{
-               width: 100,
-               height: 100,
-               resizeMode: 'cover'
-            }}
-            source={{ uri: path64 }}
-         />
-      </View>
-   )
-}
-
-const NameIcon = () => {
-   const iconSize = 100
-
-   return (
-      <Center>
-         <View style={[
-            style.centerAll,
-            style.pillLeft,
-            style.pillRight,
-            { backgroundColor: Colors.primary, width: iconSize, height: iconSize }
-         ]}>
-            <Text style={{
-               fontSize: iconSize - (iconSize * 0.65),
-               color: 'white',
-               fontWeight: '500'
-            }}>
-               RF
-            </Text>
-         </View>
-      </Center>
    )
 }
 

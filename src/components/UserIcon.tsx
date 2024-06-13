@@ -6,12 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import { AppContext } from 'context/createDataContext';
 import { Center } from './grid/Flex';
 import style from 'theme/style';
+import UserImageSelected from './utils/UserImageSelected';
+import UserNameIcon from './utils/UserNameIcon';
 
 export default function UserIcon() {
    const navigation = useNavigation();
    const [isVisible, setIsVisilbe] = useState(false)
    const [base64Icon, setbase64Icon] = useState('')
-   const { state, dispatch } = React.useContext(AppContext);
+   const { state } = React.useContext(AppContext);
 
    useEffect(() => {
       if (state.auth.token) {
@@ -21,17 +23,15 @@ export default function UserIcon() {
    }, [state.auth])
 
    return (
-      isVisible ?
-         <TouchableOpacity
+      !isVisible ? null
+         : <TouchableOpacity
             onPress={() => navigation.navigate('Setting')}
             style={{ position: 'relative' }}
          >
-            {/* <Image
-               source={require('../../assets/image/s1-alt.png')} style={styles.logoStyle}
-            /> */}
+            {/* <Image source={require('../../assets/image/s1-alt.png')} style={styles.logoStyle} /> */}
             {base64Icon
-               ? <ImageSelected path64={base64Icon} />
-               : <NameIcon />
+               ? <UserImageSelected path64={base64Icon} width={40} height={40} style={{ marginRight: 7 }} />
+               : <UserNameIcon size={40} display='RF' />
             }
             <View style={styles.iconFloat}>
                <MyIcon
@@ -42,46 +42,6 @@ export default function UserIcon() {
                />
             </View>
          </TouchableOpacity>
-         : null
-   )
-}
-
-const ImageSelected = ({ path64 }: any) => {
-   return (
-      <View style={[style.centerAll, { marginRight: 7 }]}>
-         <Image
-            borderRadius={50}
-            style={{
-               width: 40,
-               height: 40,
-               resizeMode: 'cover'
-            }}
-            source={{ uri: path64 }}
-         />
-      </View>
-   )
-}
-
-const NameIcon = () => {
-   const iconSize = 40
-
-   return (
-      <Center>
-         <View style={[
-            style.centerAll,
-            style.pillLeft,
-            style.pillRight,
-            { backgroundColor: Colors.primary, width: iconSize, height: iconSize }
-         ]}>
-            <Text style={{
-               fontSize: iconSize - (iconSize * 0.65),
-               color: 'white',
-               fontWeight: '500'
-            }}>
-               RF
-            </Text>
-         </View>
-      </Center>
    )
 }
 
